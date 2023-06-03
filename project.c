@@ -83,9 +83,8 @@ int librarianMenu()
 
             case 3:
                 printf("Returning to the role selection menu\n");
+                 return 0; //to quit
 
-                return 0;
-                 // to quit
             default:
                 printf("You must be pressed the wrong key\n");
                 printf("Try again properly");
@@ -98,18 +97,18 @@ int librarianMenu()
 }
 
 
-int borrowBook()
+void borrowBook()
 {
     if(book_count==0)
     {
         printf("The Library is empty.\n");
-        return 2; // return 2 for nothing returned
+        return ;
     }
 
     if(bookcount>3)
     {
        printf("You exceeded your limit\n");
-       return 2; // return 2 for nothing returned
+       return ;
     }
 
     char name[100];
@@ -125,34 +124,34 @@ int borrowBook()
             if(library[i].borrowed==1)
             {
                 printf("This book is already taken.\n");
-                return 2;
+               return ;
             }
             else
             {
                 library[i].borrowed = 1;
                 printf("The Book is successfully borrowed.\n");
-                return 1;
+               return ;
             }
         }
     }
 
     printf("The book is not available in the library.\n");
-    return 2;
+   return ;
 }
 
-int returnBook()
+void returnBook()
 {
      if(book_count==0)
     {
         printf("The Library is empty.\n");
-        return 2; // return 2 for nothing returned
+        return ;
 
     }
 
     if(bookcount==0)
     {
        printf("You did not take any book.\n");
-       return 2; // return 2 for nothing returned
+       return ;
     }
 
 
@@ -169,23 +168,23 @@ int returnBook()
             if(library[i].borrowed==0)
             {
                 printf("This book is not taken.\n");
-                return 2; // return 2 for nothing returned
+               return ;
             }
             else
             {
                 library[i].borrowed = 0;
                 printf("The Book is successfully returned.\n");
 
-                return 0;
+               return ;
 
             }
         }
-      return 2; // return 2 for nothing returned
+     return ;
     }
 
     printf("The spelling of the Book must be wrong.");
 
-    return 2; // return 2 for nothing returned
+    return ;
 
 }
 
@@ -222,11 +221,11 @@ int studentMenu()
                 break;
             case 4:
                 printf("Returning to the roll selection menu\n");
-                   system("cls") ;/*clear output screen*/
-                return 0;
+                return 0; //to quit
+
             default:
                 printf("Something Wrong here take a look.\n");
-                   system("cls") ;/*clear output screen*/
+
             }
 
     }while(choice != 4);
